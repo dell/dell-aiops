@@ -1,0 +1,91 @@
+{
+    "type": "message",
+    "attachments": [
+        {
+            "contentType": "application/vnd.microsoft.card.adaptive",
+            "content": {
+                "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+                "type": "AdaptiveCard",
+                "version": "1.4",
+                "body": [
+                    {
+                        "type": "TextBlock",
+                        "size": "Large",
+                        "weight": "Bolder",
+                        "text": "{{ state }} Health Issue for {{ system }}"
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "Health Score: {{ system_current_score }}  |  Severity: {{#iflt system_current_score 71}}
+CRITICAL{{else}}{{#iflt system_current_score 95}}MAJOR{{else}}OK{{/iflt}}{{/iflt}}",
+                        "wrap": true
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "**Description:** {{ description }}",
+                        "wrap": true
+                    },
+                    {
+                        "type": "TextBlock",
+                        "text": "**Resolution:** {{ resolution }}",
+                        "wrap": true
+                    },
+                    {
+                        "type": "ColumnSet",
+                        "columns": [
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "**System:** {{ system }}",
+                                        "wrap": true
+                                    },
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "**Impact:** {{ impact }}",
+                                        "wrap": true
+                                    },
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "**Impacted Object:** {{ impacted_object_name }}",
+                                        "wrap": true
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Column",
+                                "width": "stretch",
+                                "items": [
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "**Model:** {{ system_model }}",
+                                        "wrap": true
+                                    },
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "**Category:** {{ category }}",
+                                        "wrap": true
+                                    },
+                                    {
+                                        "type": "TextBlock",
+                                        "text": "**Object Type:** {{ impacted_object_native_type }}",
+                                        "wrap": true
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ],
+                "actions": [
+                    {
+                        "type": "Action.OpenUrl",
+                        "title": "View in AIOps",
+                        "url": "https://aiops.dell.com/ui/index.html#/proactivehealth"
+                    }
+                ]
+            }
+        }
+    ]
+}

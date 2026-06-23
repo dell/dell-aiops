@@ -1,0 +1,75 @@
+{
+    "blocks": [
+        {
+            "type": "header",
+            "text": {
+                "type": "plain_text",
+                "text": "{{state}} Health Issue for {{system}} - System Health is {{#iflt system_current_score 95}}FAIR{{#iflt system_current_score 71}}POOR{{/iflt}}{{else}}GOOD{{/iflt}}"
+            }
+        },
+        {
+            "type": "divider"
+        },
+        {
+            "type": "section",
+            "text": {
+                "text": "*Description:* {{ description }}",
+                "type": "mrkdwn"
+            }
+        },
+        {
+            "type": "section",
+            "text": {
+                "text": "*Resolution:* {{ resolution }}",
+                "type": "mrkdwn"
+            }
+        },
+        {
+            "type": "section",
+            "fields": [
+                {
+                    "type": "mrkdwn",
+                    "text": "*System:* {{ system }}"
+                },
+                {
+                    "type": "mrkdwn",
+                    "text": "*System Model:* {{ system_model }}"
+                }
+            ]
+        },
+        {
+            "type": "section",
+            "fields": [
+                {
+                    "type": "mrkdwn",
+                    "text": "*Current Health Score:* {{ system_current_score }}"
+                },
+                {
+                    "type": "mrkdwn",
+                    "text": "*Category:* {{ category }}"
+                }
+            ]
+        },
+        {
+            "type": "section",
+            "fields": [
+                {
+                    "type": "mrkdwn",
+                    "text": "*Impacted Object Name:* {{ impacted_object_name }}"
+                },
+                {
+                    "type": "mrkdwn",
+                    "text": "*Impacted Object Type:* {{ impacted_object_native_type }}"
+                }
+            ]
+        },
+        {
+            "type": "section",
+            "text": {
+                "type": "mrkdwn",
+                "text": "<https://aiops.dell.com/ui/index.html#/proactivehealth|View issue>"
+            }
+        }
+    ]
+}
+
